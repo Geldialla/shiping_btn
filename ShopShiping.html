@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoping Calculator</title>
+    <style>
+        body {
+            font-family: Arial;
+        }
+        .input {
+            font-size: 15px;
+            padding: 10px ;
+        }
+        .submit{
+            font-size: 15px;
+            padding: 12px 15px;
+            background-color: green;
+            border: none;
+            color: azure;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Amazon Shipping calculator</h3>
+    <p>Orders under $40 = + $10 shipping</p>
+    <p>Orders over $40 = FREE shipping</p>
+
+    <input class="input" type="number" placeholder="Enter you order" onkeydown="inputEnter(event)">
+    <button class="submit" type="submit" onclick="calculateTotal()">Calculte</button>
+
+    <p class="p"></p>
+
+    <script>
+
+        function inputEnter(event) {
+            if (event.key === 'Enter') {
+                calculateTotal()
+            }
+        }
+
+        function calculateTotal() {
+            const input = document.querySelector('.input');
+            const button = document.querySelector('.submit');
+            const p = document.querySelector('.p')
+
+            let cost = Number(input.value);
+
+
+            if (cost < 40) {
+                cost = cost + 10;
+            }
+
+
+            if (cost < 40) {
+                p.innerHTML = `$${cost}  $10 Add in you order. Shepping`;
+            } else {
+                p.innerHTML = `$${cost} FREE shipping`;
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
